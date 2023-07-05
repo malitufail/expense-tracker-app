@@ -6,7 +6,7 @@ exports.getUserById = (req, res) => {
         if (error) {
             res.send({
                 status: "error",
-                data: null
+                data: error
             })
         } else {
             res.send({
@@ -38,7 +38,7 @@ exports.registerUser = (req, res) => {
         if (error) {
             res.send({
                 status: "error",
-                data: null
+                data: error
             })
         } else {
             res.send({

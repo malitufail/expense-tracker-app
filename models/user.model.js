@@ -13,9 +13,10 @@ exports.getUserById = (data, callback) => {
     });
 }
 
-exports.getAllUsers = (data) => {
+exports.getAllUsers = (data, callback) => {
     let sql = "SELECT * FROM users";
     db.query(sql, (err, result) => {
+        console.log(result);
         if (err) {
             callback(err, null)
         } else {
@@ -34,12 +35,10 @@ exports.registerUser = (data, callback) => {
     const {
         password
     } = data.body;
-    const {
-        created_at
-    } = new Date();
-    const {
-        updated_at
-    } = new Date(); 
+    let created_at = new Date();
+
+    let updated_at = new Date();
+
    let sql = "INSERT INTO users (username, email, password,created_at, updated_at) VALUES (?,?,?,?,?)";
     db.query(sql, [username, email, password, created_at, updated_at], (err, result) => {
         if (err) {
